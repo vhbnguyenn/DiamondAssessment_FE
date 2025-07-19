@@ -17,15 +17,14 @@ import {
   Zap,
   ArrowRight,
   Diamond,
-  Sparkles,
   Shield,
   Star,
-  Gem,
   Search,
   FileText,
   TrendingUp,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Header } from "@/components/layout/Header";
 
 const ServicesPage = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -251,8 +250,8 @@ const ServicesPage = () => {
           style={{ animationDelay: "1s" }}
         ></div>
       </div>
-
-      <section className="relative z-10 py-20 lg:py-32">
+      <Header />
+      <section className="relative z-10 ">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-5xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
@@ -295,16 +294,12 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      <section className="relative z-10 py-16">
+      <section className="relative z-10 ">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
               Our Services
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Comprehensive gemstone and jewelry services backed by decades of
-              experience and cutting-edge technology.
-            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

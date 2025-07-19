@@ -9,6 +9,8 @@ import RegisterPage from "@/pages/auth/RegisterPage";
 import LoginPage from "@/pages/auth/LoginPage";
 import AboutPage from "@/pages/AboutPage";
 import ServicesPage from "@/pages/ServicesPage";
+import PricingPage from "@/pages/PricingPage";
+import BlogPage from "@/pages/BlogPage";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,9 @@ const App = () => (
             {/* Public informational routes */}
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
           </Routes>

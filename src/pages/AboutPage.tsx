@@ -26,6 +26,7 @@ import {
   Diamond,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Header } from "@/components/layout/Header";
 
 const AboutPage = () => {
   const navigate = useNavigate();
@@ -227,16 +228,13 @@ const AboutPage = () => {
           style={{ animationDelay: "1s" }}
         ></div>
       </div>
-
+      <Header />
       {/* Hero Section */}
-      <section className="relative z-10 py-20 lg:py-32">
+      <section className="relative z-10 ">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
               Trusted Gemstone
-              <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Experts Since 2009
-              </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-600 mb-12 leading-relaxed max-w-4xl mx-auto">

@@ -15,7 +15,6 @@ import {
   Eye,
   EyeOff,
   ArrowRight,
-  Sparkles,
   Shield,
   Mail,
   Lock,
@@ -161,12 +160,6 @@ const RegisterPage = () => {
 
           <Card className="bg-white/70 backdrop-blur-md border-0 shadow-2xl">
             <CardHeader className="text-center pb-6">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600/10 to-purple-600/10 backdrop-blur-sm border border-blue-200/50 rounded-full px-4 py-2 mb-4 mx-auto">
-                <Sparkles className="w-4 h-4 text-blue-600" />
-                <span className="text-sm font-medium text-blue-700">
-                  Join our community
-                </span>
-              </div>
               <CardTitle className="text-3xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
                 Create Account
               </CardTitle>
