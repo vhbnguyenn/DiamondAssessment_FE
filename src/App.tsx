@@ -5,6 +5,7 @@ import { AuthProvider } from "@/components/auth/AuthProvider";
 
 import NotFound from "@/pages/NotFound";
 import HomePage from "@/pages/HomePage";
+import RegisterPage from "@/pages/auth/RegisterPage";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<RegisterPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
