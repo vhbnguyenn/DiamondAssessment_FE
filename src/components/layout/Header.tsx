@@ -128,7 +128,7 @@ export const Header = () => {
                       <span className="font-medium">Dashboard</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem
-                      onClick={() => navigate("/profile")}
+                      onClick={() => navigate("/dashboard/profile")}
                       className="hover:bg-blue-50 transition-colors duration-200 cursor-pointer p-3 mx-2 rounded-lg"
                     >
                       <Settings className="mr-3 h-4 w-4 text-gray-600" />

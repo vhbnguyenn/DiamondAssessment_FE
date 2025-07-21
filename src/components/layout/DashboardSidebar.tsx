@@ -192,13 +192,12 @@ export const DashboardSidebar: React.FC = () => {
     <aside
       className={cn(
         "bg-white/80 backdrop-blur-md border-r-0 shadow-xl relative transition-all duration-300 ease-in-out",
+        "min-h-screen h-full",
         isCollapsed ? "w-20" : "w-80"
       )}
     >
-      {/* Decorative gradient border */}
       <div className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400"></div>
 
-      {/* Toggle Button */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
         className="absolute -right-3 top-6 w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-10"
@@ -211,16 +210,15 @@ export const DashboardSidebar: React.FC = () => {
       </button>
 
       <div className="p-6 space-y-6">
-        {/* Navigation */}
         <nav className="space-y-2">
           {filteredItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.href;
-
             return (
               <NavLink
                 key={item.href}
                 to={item.href}
+                end={item.href === "/dashboard"}
                 className={({ isActive }) =>
                   cn(
                     "group flex items-center rounded-xl text-sm font-medium transition-all duration-300",
@@ -264,7 +262,6 @@ export const DashboardSidebar: React.FC = () => {
           })}
         </nav>
 
-        {/* Logout Button */}
         <div className="pt-4 border-t border-slate-200/50">
           <button
             onClick={logout}

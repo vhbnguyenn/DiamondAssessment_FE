@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "./Header";
-import { DashboardSidebar } from "./DashboardSidebar";
+import DashboardSidebar from "./DashboardSidebar";
 
 export const DashboardLayout: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ export const DashboardLayout: React.FC = () => {
       <Header />
       <div className="flex">
         <DashboardSidebar />
-        <main className="flex-1 p-6">
+        <main className="flex-1 pl-3  bg-white">
           <div className="mx-auto">
             <Outlet />
           </div>

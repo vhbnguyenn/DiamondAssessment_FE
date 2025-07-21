@@ -527,11 +527,10 @@ const DashboardHome: React.FC = () => {
               Dashboard
             </h1>
             <p className="text-slate-600 mt-2">
-              Welcome back! Here's an overview of your{" "}
+              Welcome back,{" "}
               <span className="font-medium text-slate-700">
                 {getRoleDisplay(user?.role || "")}
-              </span>{" "}
-              activities.
+              </span>
             </p>
           </div>
         </div>

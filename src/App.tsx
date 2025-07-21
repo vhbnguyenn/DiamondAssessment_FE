@@ -14,6 +14,7 @@ import BlogPage from "@/pages/BlogPage";
 import { DashboardLayout } from "./components/layout/DashboardLayout";
 import { ProtectedRoute } from "./common/ProtectedRoute";
 import DashboardHome from "./pages/dashboard/DashboardHome";
+import ProfilePage from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -28,15 +29,6 @@ const App = () => (
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
 
-            {/* Public informational routes */}
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-
-            {/* Catch-all route */}
-            <Route path="*" element={<NotFound />} />
-
             {/* Protected Dashboard Routes */}
             <Route
               path="/dashboard"
@@ -47,7 +39,172 @@ const App = () => (
               }
             >
               <Route index element={<DashboardHome />} />
+
+              {/* Customer Routes */}
+              <Route
+                path="orders"
+                element={
+                  <ProtectedRoute requiredRoles={["customer"]}>
+                    <div>Orders Page - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="tracking"
+                element={
+                  <ProtectedRoute requiredRoles={["customer"]}>
+                    <div>Tracking Page - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="consultation"
+                element={
+                  <ProtectedRoute requiredRoles={["customer"]}>
+                    <div>Consultation Page - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="certificates"
+                element={
+                  <ProtectedRoute requiredRoles={["customer"]}>
+                    <div>Certificates Page - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="payments"
+                element={
+                  <ProtectedRoute requiredRoles={["customer"]}>
+                    <div>Payments Page - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Assessment Staff Routes */}
+              <Route
+                path="assessment-queue"
+                element={
+                  <ProtectedRoute requiredRoles={["assessment_staff"]}>
+                    <div>Assessment Queue - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="samples"
+                element={
+                  <ProtectedRoute requiredRoles={["assessment_staff"]}>
+                    <div>Sample Management - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Consultant Routes */}
+              <Route
+                path="consultation-requests"
+                element={
+                  <ProtectedRoute requiredRoles={["consultant"]}>
+                    <div>Consultation Requests - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="communications"
+                element={
+                  <ProtectedRoute requiredRoles={["consultant"]}>
+                    <div>Communications - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Manager Routes */}
+              <Route
+                path="certificate-management"
+                element={
+                  <ProtectedRoute requiredRoles={["manager"]}>
+                    <div>Certificate Management - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="staff-assignment"
+                element={
+                  <ProtectedRoute requiredRoles={["manager"]}>
+                    <div>Staff Assignment - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="services"
+                element={
+                  <ProtectedRoute requiredRoles={["manager"]}>
+                    <div>Service Management - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="blog-management"
+                element={
+                  <ProtectedRoute requiredRoles={["manager"]}>
+                    <div>Blog Management - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="reports"
+                element={
+                  <ProtectedRoute requiredRoles={["manager"]}>
+                    <div>Reports - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Admin Routes */}
+              <Route
+                path="user-management"
+                element={
+                  <ProtectedRoute requiredRoles={["admin"]}>
+                    <div>User Management - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="staff-management"
+                element={
+                  <ProtectedRoute requiredRoles={["admin"]}>
+                    <div>Staff Management - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="system-settings"
+                element={
+                  <ProtectedRoute requiredRoles={["admin"]}>
+                    <div>System Settings - Coming Soon</div>
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Common Routes */}
+              <Route
+                path="profile"
+                element={
+                  <ProtectedRoute>
+                    <ProfilePage />
+                  </ProtectedRoute>
+                }
+              />
             </Route>
+
+            {/* Public informational routes */}
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/about" element={<AboutPage />} />
+
+            {/* Catch-all route */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
