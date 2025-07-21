@@ -197,7 +197,7 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 relative z-10">
+      <section className="container mx-auto px-4 py-5 relative z-10">
         <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-12 shadow-2xl border border-white/50">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">

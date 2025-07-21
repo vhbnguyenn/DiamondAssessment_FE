@@ -11,6 +11,9 @@ import AboutPage from "@/pages/AboutPage";
 import ServicesPage from "@/pages/ServicesPage";
 import PricingPage from "@/pages/PricingPage";
 import BlogPage from "@/pages/BlogPage";
+import { DashboardLayout } from "./components/layout/DashboardLayout";
+import { ProtectedRoute } from "./common/ProtectedRoute";
+import DashboardHome from "./pages/dashboard/DashboardHome";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +36,17 @@ const App = () => (
 
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
+
+            {/* Protected Dashboard Routes */}
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout />
+                </ProtectedRoute>
+              }
+            />
+            <Route index element={<DashboardHome />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

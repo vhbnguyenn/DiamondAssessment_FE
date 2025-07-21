@@ -193,7 +193,6 @@ const RegisterPage = () => {
                       <Input
                         id="firstName"
                         name="firstName"
-                        placeholder="John"
                         value={formData.firstName}
                         onChange={handleInputChange}
                         className={`pl-10 bg-white/50 border-slate-200 focus:border-blue-500 focus:ring-blue-500/20 ${
@@ -220,7 +219,6 @@ const RegisterPage = () => {
                       <Input
                         id="lastName"
                         name="lastName"
-                        placeholder="Doe"
                         value={formData.lastName}
                         onChange={handleInputChange}
                         className={`pl-10 bg-white/50 border-slate-200 focus:border-blue-500 focus:ring-blue-500/20 ${
@@ -246,7 +244,6 @@ const RegisterPage = () => {
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="john@example.com"
                       value={formData.email}
                       onChange={handleInputChange}
                       className={`pl-10 bg-white/50 border-slate-200 focus:border-blue-500 focus:ring-blue-500/20 ${
@@ -271,7 +268,6 @@ const RegisterPage = () => {
                       id="phone"
                       name="phone"
                       type="tel"
-                      placeholder="+1 (555) 123-4567"
                       value={formData.phone}
                       onChange={handleInputChange}
                       className={`pl-10 bg-white/50 border-slate-200 focus:border-blue-500 focus:ring-blue-500/20 ${
