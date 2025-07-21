@@ -192,7 +192,7 @@ export const DashboardSidebar: React.FC = () => {
     <aside
       className={cn(
         "bg-white/80 backdrop-blur-md border-r-0 shadow-xl relative transition-all duration-300 ease-in-out",
-        "min-h-screen h-full",
+        "h-screen sticky top-0 z-40",
         isCollapsed ? "w-20" : "w-80"
       )}
     >

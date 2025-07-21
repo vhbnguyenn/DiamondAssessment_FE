@@ -15,6 +15,7 @@ import { DashboardLayout } from "./components/layout/DashboardLayout";
 import { ProtectedRoute } from "./common/ProtectedRoute";
 import DashboardHome from "./pages/dashboard/DashboardHome";
 import ProfilePage from "./pages/Profile";
+import CustomerOrders from "./pages/customer/CustomerOrders";
 
 const queryClient = new QueryClient();
 
@@ -45,7 +46,7 @@ const App = () => (
                 path="orders"
                 element={
                   <ProtectedRoute requiredRoles={["customer"]}>
-                    <div>Orders Page - Coming Soon</div>
+                    <CustomerOrders />
                   </ProtectedRoute>
                 }
               />
