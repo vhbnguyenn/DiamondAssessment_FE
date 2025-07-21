@@ -4,6 +4,7 @@ import type { User, UserRole } from "@/types";
 
 interface AuthContextType {
   user: User | null;
+  token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   hasRole: (roles: UserRole[]) => boolean;
@@ -28,6 +29,7 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const {
     user,
+    token,
     isAuthenticated,
     isLoading,
     login,
@@ -44,6 +46,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const value: AuthContextType = {
     user,
+    token,
     isAuthenticated,
     isLoading,
     hasRole,

@@ -19,442 +19,458 @@ import {
   MessageSquare,
   Calendar,
   DollarSign,
+  ArrowRight,
+  Star,
+  Activity,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const DashboardHome: React.FC = () => {
   const { user } = useAuth();
 
+  const StatsCard = ({
+    title,
+    value,
+    subtitle,
+    icon: Icon,
+    color = "from-blue-500 to-purple-500",
+  }) => (
+    <Card className="bg-white/80 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium text-slate-700">
+          {title}
+        </CardTitle>
+        <div
+          className={`w-10 h-10 bg-gradient-to-br ${color} rounded-lg flex items-center justify-center shadow-lg`}
+        >
+          <Icon className="h-5 w-5 text-white" />
+        </div>
+      </CardHeader>
+      <CardContent>
+        <div className="text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
+          {value}
+        </div>
+        <p className="text-xs text-slate-600">{subtitle}</p>
+      </CardContent>
+    </Card>
+  );
+
+  const ActionCard = ({ title, description, children, className = "" }) => (
+    <Card
+      className={`bg-white/80 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-300 ${className}`}
+    >
+      <CardHeader>
+        <CardTitle className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
+          {title}
+        </CardTitle>
+        <CardDescription className="text-slate-600">
+          {description}
+        </CardDescription>
+      </CardHeader>
+      <CardContent>{children}</CardContent>
+    </Card>
+  );
+
+  const GradientButton = ({
+    children,
+    variant = "default",
+    asChild,
+    className = "",
+    ...props
+  }) => (
+    <Button
+      className={`${
+        variant === "default"
+          ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105"
+          : "bg-white/70 border border-slate-200 hover:bg-white/90 text-slate-700 hover:border-blue-300 shadow-md hover:shadow-lg transform hover:scale-105"
+      } transition-all duration-300 font-medium ${className}`}
+      asChild={asChild}
+      {...props}
+    >
+      {children}
+    </Button>
+  );
+
   const renderCustomerDashboard = () => (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Orders</CardTitle>
-            <Package className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">3</div>
-            <p className="text-xs text-muted-foreground">2 in assessment</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Completed</CardTitle>
-            <CheckCircle className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">12</div>
-            <p className="text-xs text-muted-foreground">Total assessments</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Certificates</CardTitle>
-            <Award className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">8</div>
-            <p className="text-xs text-muted-foreground">
-              Digital certificates
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Messages</CardTitle>
-            <MessageSquare className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">2</div>
-            <p className="text-xs text-muted-foreground">Unread messages</p>
-          </CardContent>
-        </Card>
+        <StatsCard
+          title="Active Orders"
+          value="3"
+          subtitle="2 in assessment"
+          icon={Package}
+          color="from-emerald-500 to-teal-500"
+        />
+        <StatsCard
+          title="Completed"
+          value="12"
+          subtitle="Total assessments"
+          icon={CheckCircle}
+          color="from-green-500 to-emerald-500"
+        />
+        <StatsCard
+          title="Certificates"
+          value="8"
+          subtitle="Digital certificates"
+          icon={Award}
+          color="from-yellow-500 to-orange-500"
+        />
+        <StatsCard
+          title="Messages"
+          value="2"
+          subtitle="Unread messages"
+          icon={MessageSquare}
+          color="from-pink-500 to-rose-500"
+        />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Orders</CardTitle>
-            <CardDescription>Your latest assessment requests</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {[
-                { id: "DIA-001", status: "In Progress", date: "2024-01-15" },
-                { id: "DIA-002", status: "Quality Check", date: "2024-01-12" },
-                { id: "DIA-003", status: "Completed", date: "2024-01-10" },
-              ].map((order) => (
-                <div
-                  key={order.id}
-                  className="flex items-center justify-between"
-                >
-                  <div>
-                    <p className="font-medium">{order.id}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {order.date}
-                    </p>
-                  </div>
-                  <span
-                    className={`text-xs px-2 py-1 rounded-full ${
-                      order.status === "Completed"
-                        ? "bg-green-100 text-green-800"
-                        : order.status === "In Progress"
-                        ? "bg-blue-100 text-blue-800"
-                        : "bg-yellow-100 text-yellow-800"
-                    }`}
-                  >
-                    {order.status}
-                  </span>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <ActionCard
+          title="Recent Orders"
+          description="Your latest assessment requests"
+        >
+          <div className="space-y-4">
+            {[
+              {
+                id: "DIA-001",
+                status: "In Progress",
+                date: "2024-01-15",
+                color: "blue",
+              },
+              {
+                id: "DIA-002",
+                status: "Quality Check",
+                date: "2024-01-12",
+                color: "yellow",
+              },
+              {
+                id: "DIA-003",
+                status: "Completed",
+                date: "2024-01-10",
+                color: "green",
+              },
+            ].map((order) => (
+              <div
+                key={order.id}
+                className="flex items-center justify-between p-4 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl border border-slate-200/50 hover:border-blue-300/50 transition-all duration-300"
+              >
+                <div>
+                  <p className="font-semibold text-slate-800">{order.id}</p>
+                  <p className="text-sm text-slate-600">{order.date}</p>
                 </div>
-              ))}
-            </div>
-            <Button className="w-full mt-4" variant="outline" asChild>
-              <Link to="/dashboard/orders">View All Orders</Link>
-            </Button>
-          </CardContent>
-        </Card>
+                <span
+                  className={`text-xs px-3 py-1 rounded-full font-medium ${
+                    order.color === "green"
+                      ? "bg-green-100 text-green-700 border border-green-200"
+                      : order.color === "blue"
+                      ? "bg-blue-100 text-blue-700 border border-blue-200"
+                      : "bg-yellow-100 text-yellow-700 border border-yellow-200"
+                  }`}
+                >
+                  {order.status}
+                </span>
+              </div>
+            ))}
+          </div>
+          <GradientButton className="w-full mt-6" variant="outline" asChild>
+            <Link to="/dashboard/orders">
+              View All Orders
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </GradientButton>
+        </ActionCard>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-            <CardDescription>Common tasks and shortcuts</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Button className="w-full" asChild>
-              <Link to="/dashboard/orders/new">Request New Assessment</Link>
-            </Button>
-            <Button className="w-full" variant="outline" asChild>
-              <Link to="/dashboard/tracking">Track Assessment</Link>
-            </Button>
-            <Button className="w-full" variant="outline" asChild>
-              <Link to="/dashboard/consultation">Get Consultation</Link>
-            </Button>
-          </CardContent>
-        </Card>
+        <ActionCard
+          title="Quick Actions"
+          description="Common tasks and shortcuts"
+        >
+          <div className="space-y-4">
+            <GradientButton className="w-full h-12" asChild>
+              <Link to="/dashboard/orders/new">
+                <Package className="mr-2 h-5 w-5" />
+                Request New Assessment
+              </Link>
+            </GradientButton>
+            <GradientButton className="w-full h-12" variant="outline" asChild>
+              <Link to="/dashboard/tracking">
+                <Activity className="mr-2 h-5 w-5" />
+                Track Assessment
+              </Link>
+            </GradientButton>
+            <GradientButton className="w-full h-12" variant="outline" asChild>
+              <Link to="/dashboard/consultation">
+                <MessageSquare className="mr-2 h-5 w-5" />
+                Get Consultation
+              </Link>
+            </GradientButton>
+          </div>
+        </ActionCard>
       </div>
     </div>
   );
 
   const renderStaffDashboard = () => (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Pending Assessments
-            </CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">8</div>
-            <p className="text-xs text-muted-foreground">Awaiting review</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">In Progress</CardTitle>
-            <Package className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">5</div>
-            <p className="text-xs text-muted-foreground">Currently assessing</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Completed Today
-            </CardTitle>
-            <CheckCircle className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">12</div>
-            <p className="text-xs text-muted-foreground">+3 from yesterday</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Average Time</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">2.3</div>
-            <p className="text-xs text-muted-foreground">Days per assessment</p>
-          </CardContent>
-        </Card>
+        <StatsCard
+          title="Pending Assessments"
+          value="8"
+          subtitle="Awaiting review"
+          icon={Clock}
+          color="from-orange-500 to-red-500"
+        />
+        <StatsCard
+          title="In Progress"
+          value="5"
+          subtitle="Currently assessing"
+          icon={Package}
+          color="from-blue-500 to-cyan-500"
+        />
+        <StatsCard
+          title="Completed Today"
+          value="12"
+          subtitle="+3 from yesterday"
+          icon={CheckCircle}
+          color="from-green-500 to-emerald-500"
+        />
+        <StatsCard
+          title="Average Time"
+          value="2.3"
+          subtitle="Days per assessment"
+          icon={Calendar}
+          color="from-purple-500 to-indigo-500"
+        />
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Assessment Queue</CardTitle>
-          <CardDescription>Diamonds awaiting assessment</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            {[
-              {
-                sample: "SAMPLE-001",
-                customer: "John Doe",
-                priority: "High",
-                date: "2024-01-15",
-              },
-              {
-                sample: "SAMPLE-002",
-                customer: "Jane Smith",
-                priority: "Medium",
-                date: "2024-01-15",
-              },
-              {
-                sample: "SAMPLE-003",
-                customer: "Bob Johnson",
-                priority: "Low",
-                date: "2024-01-14",
-              },
-            ].map((item) => (
-              <div
-                key={item.sample}
-                className="flex items-center justify-between p-3 border rounded-lg"
-              >
-                <div>
-                  <p className="font-medium">{item.sample}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {item.customer}
-                  </p>
-                </div>
-                <div className="text-right">
-                  <span
-                    className={`text-xs px-2 py-1 rounded-full ${
-                      item.priority === "High"
-                        ? "bg-red-100 text-red-800"
-                        : item.priority === "Medium"
-                        ? "bg-yellow-100 text-yellow-800"
-                        : "bg-green-100 text-green-800"
-                    }`}
-                  >
-                    {item.priority}
-                  </span>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {item.date}
-                  </p>
-                </div>
+      <ActionCard
+        title="Assessment Queue"
+        description="Diamonds awaiting assessment"
+      >
+        <div className="space-y-4">
+          {[
+            {
+              sample: "SAMPLE-001",
+              customer: "John Doe",
+              priority: "High",
+              date: "2024-01-15",
+            },
+            {
+              sample: "SAMPLE-002",
+              customer: "Jane Smith",
+              priority: "Medium",
+              date: "2024-01-15",
+            },
+            {
+              sample: "SAMPLE-003",
+              customer: "Bob Johnson",
+              priority: "Low",
+              date: "2024-01-14",
+            },
+          ].map((item) => (
+            <div
+              key={item.sample}
+              className="flex items-center justify-between p-4 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl border border-slate-200/50 hover:border-blue-300/50 transition-all duration-300 hover:shadow-md"
+            >
+              <div>
+                <p className="font-semibold text-slate-800">{item.sample}</p>
+                <p className="text-sm text-slate-600">{item.customer}</p>
               </div>
-            ))}
-          </div>
-          <Button className="w-full mt-4" asChild>
-            <Link to="/dashboard/assessment-queue">View Full Queue</Link>
-          </Button>
-        </CardContent>
-      </Card>
+              <div className="text-right">
+                <span
+                  className={`text-xs px-3 py-1 rounded-full font-medium ${
+                    item.priority === "High"
+                      ? "bg-red-100 text-red-700 border border-red-200"
+                      : item.priority === "Medium"
+                      ? "bg-yellow-100 text-yellow-700 border border-yellow-200"
+                      : "bg-green-100 text-green-700 border border-green-200"
+                  }`}
+                >
+                  {item.priority}
+                </span>
+                <p className="text-sm text-slate-500 mt-1">{item.date}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <GradientButton className="w-full mt-6" asChild>
+          <Link to="/dashboard/assessment-queue">
+            <Package className="mr-2 h-5 w-5" />
+            View Full Queue
+          </Link>
+        </GradientButton>
+      </ActionCard>
     </div>
   );
 
   const renderManagerDashboard = () => (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">$45,231</div>
-            <p className="text-xs text-muted-foreground">
-              +20.1% from last month
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Orders</CardTitle>
-            <Package className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">127</div>
-            <p className="text-xs text-muted-foreground">15 completed today</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Staff Performance
-            </CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">94%</div>
-            <p className="text-xs text-muted-foreground">Average efficiency</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Customer Satisfaction
-            </CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">4.8</div>
-            <p className="text-xs text-muted-foreground">Average rating</p>
-          </CardContent>
-        </Card>
+        <StatsCard
+          title="Total Revenue"
+          value="$45,231"
+          subtitle="+20.1% from last month"
+          icon={DollarSign}
+          color="from-emerald-500 to-teal-500"
+        />
+        <StatsCard
+          title="Active Orders"
+          value="127"
+          subtitle="15 completed today"
+          icon={Package}
+          color="from-blue-500 to-cyan-500"
+        />
+        <StatsCard
+          title="Staff Performance"
+          value="94%"
+          subtitle="Average efficiency"
+          icon={TrendingUp}
+          color="from-purple-500 to-indigo-500"
+        />
+        <StatsCard
+          title="Customer Satisfaction"
+          value="4.8"
+          subtitle="Average rating"
+          icon={Star}
+          color="from-yellow-500 to-orange-500"
+        />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Activities</CardTitle>
-            <CardDescription>Latest system activities</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {[
-                {
-                  action: "Certificate issued",
-                  item: "DIA-001",
-                  time: "2 hours ago",
-                },
-                {
-                  action: "Staff assigned",
-                  item: "SAMPLE-045",
-                  time: "4 hours ago",
-                },
-                {
-                  action: "Quality check completed",
-                  item: "DIA-003",
-                  time: "6 hours ago",
-                },
-              ].map((activity, index) => (
-                <div key={index} className="flex items-center justify-between">
-                  <div>
-                    <p className="font-medium">{activity.action}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {activity.item}
-                    </p>
-                  </div>
-                  <span className="text-xs text-muted-foreground">
-                    {activity.time}
-                  </span>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <ActionCard
+          title="Recent Activities"
+          description="Latest system activities"
+        >
+          <div className="space-y-4">
+            {[
+              {
+                action: "Certificate issued",
+                item: "DIA-001",
+                time: "2 hours ago",
+              },
+              {
+                action: "Staff assigned",
+                item: "SAMPLE-045",
+                time: "4 hours ago",
+              },
+              {
+                action: "Quality check completed",
+                item: "DIA-003",
+                time: "6 hours ago",
+              },
+            ].map((activity, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-between p-4 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl border border-slate-200/50"
+              >
+                <div>
+                  <p className="font-semibold text-slate-800">
+                    {activity.action}
+                  </p>
+                  <p className="text-sm text-slate-600">{activity.item}</p>
                 </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+                <span className="text-xs text-slate-500 font-medium">
+                  {activity.time}
+                </span>
+              </div>
+            ))}
+          </div>
+        </ActionCard>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Quick Management</CardTitle>
-            <CardDescription>Common management tasks</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Button className="w-full" asChild>
-              <Link to="/dashboard/staff-assignment">Assign Staff</Link>
-            </Button>
-            <Button className="w-full" variant="outline" asChild>
+        <ActionCard
+          title="Quick Management"
+          description="Common management tasks"
+        >
+          <div className="space-y-4">
+            <GradientButton className="w-full h-12" asChild>
+              <Link to="/dashboard/staff-assignment">
+                <Users className="mr-2 h-5 w-5" />
+                Assign Staff
+              </Link>
+            </GradientButton>
+            <GradientButton className="w-full h-12" variant="outline" asChild>
               <Link to="/dashboard/certificate-management">
+                <Award className="mr-2 h-5 w-5" />
                 Manage Certificates
               </Link>
-            </Button>
-            <Button className="w-full" variant="outline" asChild>
-              <Link to="/dashboard/reports">View Reports</Link>
-            </Button>
-          </CardContent>
-        </Card>
+            </GradientButton>
+            <GradientButton className="w-full h-12" variant="outline" asChild>
+              <Link to="/dashboard/reports">
+                <TrendingUp className="mr-2 h-5 w-5" />
+                View Reports
+              </Link>
+            </GradientButton>
+          </div>
+        </ActionCard>
       </div>
     </div>
   );
 
   const renderAdminDashboard = () => (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">2,543</div>
-            <p className="text-xs text-muted-foreground">+180 this month</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Staff</CardTitle>
-            <Package className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">23</div>
-            <p className="text-xs text-muted-foreground">
-              Across all departments
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">System Health</CardTitle>
-            <CheckCircle className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">99.9%</div>
-            <p className="text-xs text-muted-foreground">Uptime this month</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Support Tickets
-            </CardTitle>
-            <AlertCircle className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">12</div>
-            <p className="text-xs text-muted-foreground">3 urgent</p>
-          </CardContent>
-        </Card>
+        <StatsCard
+          title="Total Users"
+          value="2,543"
+          subtitle="+180 this month"
+          icon={Users}
+          color="from-blue-500 to-purple-500"
+        />
+        <StatsCard
+          title="Active Staff"
+          value="23"
+          subtitle="Across all departments"
+          icon={Package}
+          color="from-emerald-500 to-teal-500"
+        />
+        <StatsCard
+          title="System Health"
+          value="99.9%"
+          subtitle="Uptime this month"
+          icon={CheckCircle}
+          color="from-green-500 to-emerald-500"
+        />
+        <StatsCard
+          title="Support Tickets"
+          value="12"
+          subtitle="3 urgent"
+          icon={AlertCircle}
+          color="from-orange-500 to-red-500"
+        />
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>System Administration</CardTitle>
-          <CardDescription>
-            Manage users, staff, and system settings
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button className="h-20 flex flex-col" asChild>
-              <Link to="/dashboard/user-management">
-                <Users className="h-6 w-6 mb-2" />
-                User Management
-              </Link>
-            </Button>
-            <Button className="h-20 flex flex-col" variant="outline" asChild>
-              <Link to="/dashboard/staff-management">
-                <Package className="h-6 w-6 mb-2" />
-                Staff Management
-              </Link>
-            </Button>
-            <Button className="h-20 flex flex-col" variant="outline" asChild>
-              <Link to="/dashboard/system-settings">
-                <AlertCircle className="h-6 w-6 mb-2" />
-                System Settings
-              </Link>
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+      <ActionCard
+        title="System Administration"
+        description="Manage users, staff, and system settings"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <GradientButton className="h-24 flex flex-col justify-center" asChild>
+            <Link to="/dashboard/user-management">
+              <Users className="h-8 w-8 mb-2" />
+              <span className="text-sm font-medium">User Management</span>
+            </Link>
+          </GradientButton>
+          <GradientButton
+            className="h-24 flex flex-col justify-center"
+            variant="outline"
+            asChild
+          >
+            <Link to="/dashboard/staff-management">
+              <Package className="h-8 w-8 mb-2" />
+              <span className="text-sm font-medium">Staff Management</span>
+            </Link>
+          </GradientButton>
+          <GradientButton
+            className="h-24 flex flex-col justify-center"
+            variant="outline"
+            asChild
+          >
+            <Link to="/dashboard/system-settings">
+              <AlertCircle className="h-8 w-8 mb-2" />
+              <span className="text-sm font-medium">System Settings</span>
+            </Link>
+          </GradientButton>
+        </div>
+      </ActionCard>
     </div>
   );
 
@@ -478,7 +494,7 @@ const DashboardHome: React.FC = () => {
       case "assessment_staff":
         return renderStaffDashboard();
       case "consultant":
-        return renderStaffDashboard(); // Similar to staff for now
+        return renderStaffDashboard();
       case "manager":
         return renderManagerDashboard();
       case "admin":
@@ -489,22 +505,39 @@ const DashboardHome: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-          <p className="text-muted-foreground">
-            Welcome back! Here's an overview of your{" "}
-            {getRoleDisplay(user?.role || "")} activities.
-          </p>
-        </div>
-        <div className="text-right">
-          <p className="text-sm text-muted-foreground">Signed in as</p>
-          <p className="font-medium">{user?.email}</p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-400/10 to-cyan-400/10 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute top-1/3 right-1/4 w-64 h-64 bg-gradient-to-br from-purple-400/5 to-pink-400/5 rounded-full blur-2xl animate-pulse"
+          style={{ animationDelay: "1s" }}
+        ></div>
       </div>
 
-      {renderDashboardByRole()}
+      <div className="relative z-10 p-6 space-y-8">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Dashboard
+            </h1>
+            <p className="text-slate-600 mt-2">
+              Welcome back! Here's an overview of your{" "}
+              <span className="font-medium text-slate-700">
+                {getRoleDisplay(user?.role || "")}
+              </span>{" "}
+              activities.
+            </p>
+          </div>
+        </div>
+
+        {renderDashboardByRole()}
+      </div>
     </div>
   );
 };

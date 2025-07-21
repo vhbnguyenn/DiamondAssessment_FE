@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -27,6 +28,7 @@ import {
   Headphones,
 } from "lucide-react";
 import { toast } from "sonner";
+import { useAuth } from "@/components/auth/AuthProvider";
 
 // Mock LoadingSpinner component
 const LoadingSpinner = ({ size = "md", className = "" }) => (
@@ -38,6 +40,13 @@ const LoadingSpinner = ({ size = "md", className = "" }) => (
 );
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { login } = useAuth();
+
+  // Get the intended destination from location state, default to dashboard
+  const from = location.state?.from?.pathname || "/dashboard";
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -74,7 +83,7 @@ const LoginPage = () => {
       description: "Customer consultation",
     },
     {
-      role: "Staff",
+      role: "Assessment Staff",
       email: "staff@diamond.com",
       password: "password123",
       icon: Users,
@@ -129,25 +138,33 @@ const LoginPage = () => {
       setError("");
       setIsLoading(true);
 
-      // Mock login
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Use the login function from AuthProvider
+      await login(formData.email, formData.password);
 
-      // Check if credentials match demo accounts
+      // Find demo account for success message
       const demoAccount = demoCredentials.find(
-        (demo) =>
-          demo.email === formData.email && demo.password === formData.password
+        (demo) => demo.email === formData.email
       );
 
       if (demoAccount) {
         toast.success(`Login successful! Welcome ${demoAccount.role}!`);
-        console.log(`Redirecting to dashboard for role: ${demoAccount.role}`);
       } else {
-        toast("Login successful!");
+        toast.success("Login successful!");
       }
+
+      // Navigate to dashboard or intended destination
+      navigate(from, { replace: true });
     } catch (err) {
-      setError("Invalid email or password. Please try again.");
+      setError(err.message || "Invalid email or password. Please try again.");
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  // Handle Enter key press
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
     }
   };
 
@@ -195,6 +212,14 @@ const LoginPage = () => {
           {/* Left Side - Demo Accounts */}
           <div className="hidden lg:block space-y-6">
             <div className="space-y-3">
+              <div className="text-center mb-6">
+                <h2 className="text-xl font-bold text-slate-800 mb-2">
+                  🎯 Demo Accounts
+                </h2>
+                <p className="text-sm text-slate-600">
+                  Click any account to auto-fill credentials
+                </p>
+              </div>
               {demoCredentials.map((demo, index) => {
                 const Icon = demo.icon;
                 return (
@@ -303,6 +328,7 @@ const LoginPage = () => {
                         placeholder="your@email.com"
                         value={formData.email}
                         onChange={handleInputChange}
+                        onKeyPress={handleKeyPress}
                         className="pl-10 bg-white/70 border-slate-200 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-300"
                       />
                     </div>
@@ -324,6 +350,7 @@ const LoginPage = () => {
                         placeholder="Enter your password"
                         value={formData.password}
                         onChange={handleInputChange}
+                        onKeyPress={handleKeyPress}
                         className="pl-10 pr-10 bg-white/70 border-slate-200 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-300"
                       />
                       <Button

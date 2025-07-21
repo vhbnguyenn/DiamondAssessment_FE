@@ -45,8 +45,9 @@ const App = () => (
                   <DashboardLayout />
                 </ProtectedRoute>
               }
-            />
-            <Route index element={<DashboardHome />} />
+            >
+              <Route index element={<DashboardHome />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </AuthProvider>
