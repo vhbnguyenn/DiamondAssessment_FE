@@ -194,7 +194,6 @@ const LoginPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-      {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
         <div
@@ -209,7 +208,6 @@ const LoginPage = () => {
 
       <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
         <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 items-center">
-          {/* Left Side - Demo Accounts */}
           <div className="hidden lg:block space-y-6">
             <div className="space-y-3">
               <div className="text-center mb-6">
@@ -263,9 +261,7 @@ const LoginPage = () => {
             </div>
           </div>
 
-          {/* Right Side - Login Form */}
           <div className="w-full max-w-md mx-auto lg:mx-0">
-            {/* Logo */}
             <div className="text-center mb-8">
               <Link
                 to="/"
@@ -424,7 +420,6 @@ const LoginPage = () => {
                   </p>
                 </div>
 
-                {/* Mobile Demo Credentials */}
                 <div className="lg:hidden mt-8 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-100">
                   <p className="text-sm font-semibold text-slate-700 text-center mb-3">
                     🎯 Demo Accounts

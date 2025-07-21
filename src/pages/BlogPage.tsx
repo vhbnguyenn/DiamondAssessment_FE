@@ -192,7 +192,6 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-      {/* Background decorative elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
         <div
@@ -205,7 +204,6 @@ const BlogPage = () => {
         ></div>
       </div>
       <Header />
-      {/* Header Section */}
       <section className="relative z-10 ">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-5xl mx-auto">
@@ -224,7 +222,6 @@ const BlogPage = () => {
         </div>
       </section>
 
-      {/* Search and Filter Section */}
       <section className="relative z-10 py-8">
         <div className="container mx-auto px-4">
           <div className="bg-white/60 backdrop-blur-md rounded-3xl p-6 shadow-2xl border border-white/50">
@@ -266,7 +263,6 @@ const BlogPage = () => {
         </div>
       </section>
 
-      {/* Blog Posts Grid */}
       <section className="relative z-10 py-16">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-12">
@@ -415,7 +411,6 @@ const BlogPage = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
       <section className="relative z-10 py-20">
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-12 lg:p-16 text-white shadow-2xl text-center relative overflow-hidden">

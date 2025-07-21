@@ -9,7 +9,7 @@ export const DashboardLayout: React.FC = () => {
       <Header />
       <div className="flex">
         <DashboardSidebar />
-        <main className="flex-1 pl-3  bg-white">
+        <main className="flex-1 pl-3  bg-white pt-5">
           <div className="mx-auto">
             <Outlet />
           </div>

@@ -16,6 +16,7 @@ import { ProtectedRoute } from "./common/ProtectedRoute";
 import DashboardHome from "./pages/dashboard/DashboardHome";
 import ProfilePage from "./pages/Profile";
 import CustomerOrders from "./pages/customer/CustomerOrders";
+import CustomerTracking from "./pages/customer/CustomerTracking";
 
 const queryClient = new QueryClient();
 
@@ -54,7 +55,7 @@ const App = () => (
                 path="tracking"
                 element={
                   <ProtectedRoute requiredRoles={["customer"]}>
-                    <div>Tracking Page - Coming Soon</div>
+                    <CustomerTracking />
                   </ProtectedRoute>
                 }
               />

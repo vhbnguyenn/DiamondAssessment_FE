@@ -252,7 +252,6 @@ const PricingPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-      {/* Background decorative elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
         <div
@@ -265,7 +264,6 @@ const PricingPage = () => {
         ></div>
       </div>
 
-      {/* Header Section */}
       <Header />
       <section className="relative z-10 ">
         <div className="container mx-auto px-4">
@@ -283,7 +281,6 @@ const PricingPage = () => {
               needs.
             </p>
 
-            {/* Billing Toggle */}
             <div className="flex items-center justify-center gap-4 mb-12">
               <span
                 className={`text-lg font-medium ${
@@ -335,7 +332,6 @@ const PricingPage = () => {
         </div>
       </section>
 
-      {/* Category Filter */}
       <section className="relative z-10">
         <div className="container mx-auto px-4">
           <div className="flex justify-center mb-8">
@@ -362,7 +358,6 @@ const PricingPage = () => {
         </div>
       </section>
 
-      {/* Pricing Cards */}
       <section className="relative z-10 py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -404,7 +399,6 @@ const PricingPage = () => {
                       {pkg.description}
                     </CardDescription>
 
-                    {/* Pricing */}
                     <div className="mb-6">
                       <div className="flex items-baseline gap-2">
                         <span className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -463,7 +457,6 @@ const PricingPage = () => {
         </div>
       </section>
 
-      {/* Payment Methods */}
       <section className="relative z-10 py-20">
         <div className="container mx-auto px-4">
           <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 lg:p-12 shadow-2xl border border-white/50">
@@ -515,7 +508,6 @@ const PricingPage = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="relative z-10 py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -578,7 +570,6 @@ const PricingPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="relative z-10 py-20">
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-12 lg:p-16 text-white shadow-2xl text-center">

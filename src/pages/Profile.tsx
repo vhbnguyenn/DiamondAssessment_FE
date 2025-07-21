@@ -173,7 +173,6 @@ const ProfilePage: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -186,12 +185,10 @@ const ProfilePage: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Profile Overview Card */}
         <div className="lg:col-span-1">
           <Card className="bg-white/80 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-300">
             <CardHeader className="text-center pb-4">
               <div className="relative mx-auto mb-4">
-                {/* Avatar */}
                 <div
                   className={`w-24 h-24 bg-gradient-to-br ${getRoleColor(
                     user.role
@@ -199,7 +196,6 @@ const ProfilePage: React.FC = () => {
                 >
                   <RoleIcon className="h-12 w-12 text-white" />
                 </div>
-                {/* Camera Button */}
                 <button className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
                   <Camera className="h-4 w-4 text-white" />
                 </button>
@@ -211,7 +207,6 @@ const ProfilePage: React.FC = () => {
                 {getRoleDisplay(user.role)}
               </CardDescription>
 
-              {/* Role Badge */}
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600/10 to-purple-600/10 backdrop-blur-sm border border-blue-200/50 rounded-full px-4 py-2 mt-4">
                 <Shield className="w-4 h-4 text-blue-600" />
                 <span className="text-sm font-medium text-blue-700">
@@ -221,7 +216,6 @@ const ProfilePage: React.FC = () => {
             </CardHeader>
 
             <CardContent className="space-y-4">
-              {/* Quick Stats */}
               <div className="space-y-3">
                 <div className="flex items-center gap-3 p-3 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl">
                   <Mail className="h-4 w-4 text-slate-600" />
@@ -246,9 +240,7 @@ const ProfilePage: React.FC = () => {
           </Card>
         </div>
 
-        {/* Main Content */}
         <div className="lg:col-span-2 space-y-8">
-          {/* Personal Information */}
           <Card className="bg-white/80 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-300">
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
@@ -420,7 +412,6 @@ const ProfilePage: React.FC = () => {
             </CardContent>
           </Card>
 
-          {/* Change Password */}
           <Card className="bg-white/80 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-300">
             <CardHeader>
               <CardTitle className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">

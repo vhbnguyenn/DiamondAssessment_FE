@@ -216,7 +216,6 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-      {/* Background decorative elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
         <div
@@ -229,7 +228,6 @@ const AboutPage = () => {
         ></div>
       </div>
       <Header />
-      {/* Hero Section */}
       <section className="relative z-10 ">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center">
@@ -267,7 +265,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="relative z-10 py-16">
         <div className="container mx-auto px-4">
           <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 lg:p-12 shadow-2xl border border-white/50">
@@ -293,7 +290,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="relative z-10 py-20">
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-12 lg:p-16 text-white shadow-2xl text-center">

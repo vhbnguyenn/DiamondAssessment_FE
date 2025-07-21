@@ -293,7 +293,6 @@ const CustomerOrders: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -311,7 +310,6 @@ const CustomerOrders: React.FC = () => {
         </GradientButton>
       </div>
 
-      {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatsCard
           title="Total Orders"
@@ -349,7 +347,6 @@ const CustomerOrders: React.FC = () => {
         />
       </div>
 
-      {/* Filters */}
       <Card className="bg-white/80 backdrop-blur-md border-0 shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
@@ -429,7 +426,6 @@ const CustomerOrders: React.FC = () => {
         </CardContent>
       </Card>
 
-      {/* Orders List */}
       <div className="space-y-6">
         {filteredOrders.length === 0 ? (
           <Card className="bg-white/80 backdrop-blur-md border-0 shadow-lg">
@@ -551,7 +547,6 @@ const CustomerOrders: React.FC = () => {
 
                 <CardContent>
                   <div className="space-y-4">
-                    {/* Services */}
                     <div>
                       <h4 className="font-semibold text-slate-700 mb-3">
                         Services
@@ -581,7 +576,6 @@ const CustomerOrders: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Timeline */}
                     {order.completionDate && (
                       <div className="flex items-center justify-between pt-4 border-t border-slate-200/50">
                         <div className="flex items-center gap-2 text-sm text-slate-600">
