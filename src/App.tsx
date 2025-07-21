@@ -17,6 +17,9 @@ import DashboardHome from "./pages/dashboard/DashboardHome";
 import ProfilePage from "./pages/Profile";
 import CustomerOrders from "./pages/customer/CustomerOrders";
 import CustomerTracking from "./pages/customer/CustomerTracking";
+import AdminUserManagement from "./pages/admin/AdminUserManagement";
+import AdminStaffManagement from "./pages/admin/AdminStaffManagement";
+import AdminSystemSettings from "./pages/admin/SettingsPage";
 
 const queryClient = new QueryClient();
 
@@ -167,7 +170,7 @@ const App = () => (
                 path="user-management"
                 element={
                   <ProtectedRoute requiredRoles={["admin"]}>
-                    <div>User Management - Coming Soon</div>
+                    <AdminUserManagement />
                   </ProtectedRoute>
                 }
               />
@@ -175,7 +178,7 @@ const App = () => (
                 path="staff-management"
                 element={
                   <ProtectedRoute requiredRoles={["admin"]}>
-                    <div>Staff Management - Coming Soon</div>
+                    <AdminStaffManagement />
                   </ProtectedRoute>
                 }
               />
@@ -183,7 +186,7 @@ const App = () => (
                 path="system-settings"
                 element={
                   <ProtectedRoute requiredRoles={["admin"]}>
-                    <div>System Settings - Coming Soon</div>
+                    <AdminSystemSettings />
                   </ProtectedRoute>
                 }
               />
