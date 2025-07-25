@@ -20,6 +20,7 @@ import CustomerTracking from "./pages/customer/CustomerTracking";
 import AdminUserManagement from "./pages/admin/AdminUserManagement";
 import AdminStaffManagement from "./pages/admin/AdminStaffManagement";
 import AdminSystemSettings from "./pages/admin/SettingsPage";
+import CustomerConsultationPage from "./pages/customer/CustomerConsultationPage";
 
 const queryClient = new QueryClient();
 
@@ -66,7 +67,7 @@ const App = () => (
                 path="consultation"
                 element={
                   <ProtectedRoute requiredRoles={["customer"]}>
-                    <div>Consultation Page - Coming Soon</div>
+                    <CustomerConsultationPage />
                   </ProtectedRoute>
                 }
               />
