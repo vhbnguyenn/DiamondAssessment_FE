@@ -21,6 +21,7 @@ import AdminUserManagement from "./pages/admin/AdminUserManagement";
 import AdminStaffManagement from "./pages/admin/AdminStaffManagement";
 import AdminSystemSettings from "./pages/admin/SettingsPage";
 import CustomerConsultationPage from "./pages/customer/CustomerConsultationPage";
+import CustomerCertificatesPage from "./pages/customer/CustomerCertificatesPage";
 
 const queryClient = new QueryClient();
 
@@ -75,7 +76,7 @@ const App = () => (
                 path="certificates"
                 element={
                   <ProtectedRoute requiredRoles={["customer"]}>
-                    <div>Certificates Page - Coming Soon</div>
+                    <CustomerCertificatesPage />
                   </ProtectedRoute>
                 }
               />
