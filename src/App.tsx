@@ -32,6 +32,7 @@ import StaffAssignment from "./pages/manager/StaffAssignment";
 import ServiceManagement from "./pages/manager/ServiceManagement";
 import Reports from "./pages/manager/Reports";
 import BlogManagement from "./pages/manager/BlogManagement";
+import OrderPage from "./pages/customer/OrderPage";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,14 @@ const App = () => (
                 element={
                   <ProtectedRoute requiredRoles={["customer"]}>
                     <CustomerOrders />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="orders/new"
+                element={
+                  <ProtectedRoute requiredRoles={["customer"]}>
+                    <OrderPage />
                   </ProtectedRoute>
                 }
               />

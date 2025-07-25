@@ -51,33 +51,52 @@ export const Header = () => {
       <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 shadow-lg sticky top-0 z-50 transition-all duration-300">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            <Link
-              to="/"
-              className="flex items-center space-x-3 hover:scale-105 transition-all duration-300 group"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <Diamond className="h-5 w-5 lg:h-6 lg:w-6 text-white animate-pulse" />
+            {isAuthenticated ? (
+              <span
+                className="flex items-center space-x-3 cursor-default select-none"
+                aria-disabled="true"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl blur-md opacity-70"></div>
+                  <div className="relative w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <Diamond className="h-5 w-5 lg:h-6 lg:w-6 text-white animate-pulse" />
+                  </div>
                 </div>
-              </div>
-              <span className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Diamond Assessment
+                <span className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  Diamond Assessment
+                </span>
               </span>
-            </Link>
+            ) : (
+              <Link
+                to="/"
+                className="flex items-center space-x-3 hover:scale-105 transition-all duration-300 group"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <Diamond className="h-5 w-5 lg:h-6 lg:w-6 text-white animate-pulse" />
+                  </div>
+                </div>
+                <span className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  Diamond Assessment
+                </span>
+              </Link>
+            )}
 
-            <nav className="hidden lg:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="relative text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium group"
-                >
-                  <span className="relative z-10">{item.name}</span>
-                  <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                </Link>
-              ))}
-            </nav>
+            {!isAuthenticated && (
+              <nav className="hidden lg:flex items-center space-x-8">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="relative text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium group"
+                  >
+                    <span className="relative z-10">{item.name}</span>
+                    <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                  </Link>
+                ))}
+              </nav>
+            )}
 
             <div className="flex items-center space-x-4">
               {isAuthenticated && user ? (
