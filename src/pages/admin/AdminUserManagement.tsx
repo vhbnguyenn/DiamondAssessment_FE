@@ -10,13 +10,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
@@ -424,23 +417,20 @@ const AdminUserManagement: React.FC = () => {
 
       <div className="space-y-2">
         <Label htmlFor="role">Role *</Label>
-        <Select
+        <select
+          id="role"
           value={user.role || "customer"}
-          onValueChange={(value) =>
-            setUser({ ...user, role: value as UserRole })
+          onChange={(e) =>
+            setUser({ ...user, role: e.target.value as UserRole })
           }
+          className="w-full px-3 py-2 bg-white/70 border border-slate-200 rounded-md focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
         >
-          <SelectTrigger className="bg-white/70 border-slate-200 focus:border-blue-500">
-            <SelectValue placeholder="Select role" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="customer">Customer</SelectItem>
-            <SelectItem value="assessment_staff">Assessment Staff</SelectItem>
-            <SelectItem value="consultant">Consultant</SelectItem>
-            <SelectItem value="manager">Manager</SelectItem>
-            <SelectItem value="admin">Admin</SelectItem>
-          </SelectContent>
-        </Select>
+          <option value="customer">Customer</option>
+          <option value="assessment_staff">Assessment Staff</option>
+          <option value="consultant">Consultant</option>
+          <option value="manager">Manager</option>
+          <option value="admin">Admin</option>
+        </select>
       </div>
 
       <div className="space-y-2">
@@ -478,24 +468,24 @@ const AdminUserManagement: React.FC = () => {
 
       <div className="space-y-2">
         <Label htmlFor="status">Account Status</Label>
-        <Select
+        <select
+          id="status"
           value={user.accountStatus || "active"}
-          onValueChange={(value) =>
+          onChange={(e) =>
             setUser({
               ...user,
-              accountStatus: value as "active" | "inactive" | "suspended",
+              accountStatus: e.target.value as
+                | "active"
+                | "inactive"
+                | "suspended",
             })
           }
+          className="w-full px-3 py-2 bg-white/70 border border-slate-200 rounded-md focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
         >
-          <SelectTrigger className="bg-white/70 border-slate-200 focus:border-blue-500">
-            <SelectValue placeholder="Select status" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="active">Active</SelectItem>
-            <SelectItem value="inactive">Inactive</SelectItem>
-            <SelectItem value="suspended">Suspended</SelectItem>
-          </SelectContent>
-        </Select>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+          <option value="suspended">Suspended</option>
+        </select>
       </div>
 
       {user.role === "customer" && (
@@ -516,20 +506,18 @@ const AdminUserManagement: React.FC = () => {
         <>
           <div className="space-y-2">
             <Label htmlFor="department">Department</Label>
-            <Select
+            <select
+              id="department"
               value={user.department || ""}
-              onValueChange={(value) => setUser({ ...user, department: value })}
+              onChange={(e) => setUser({ ...user, department: e.target.value })}
+              className="w-full px-3 py-2 bg-white/70 border border-slate-200 rounded-md focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
             >
-              <SelectTrigger className="bg-white/70 border-slate-200 focus:border-blue-500">
-                <SelectValue placeholder="Select department" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="assessment">Assessment</SelectItem>
-                <SelectItem value="consultation">Consultation</SelectItem>
-                <SelectItem value="management">Management</SelectItem>
-                <SelectItem value="administration">Administration</SelectItem>
-              </SelectContent>
-            </Select>
+              <option value="">Select department</option>
+              <option value="assessment">Assessment</option>
+              <option value="consultation">Consultation</option>
+              <option value="management">Management</option>
+              <option value="administration">Administration</option>
+            </select>
           </div>
 
           <div className="space-y-2">
@@ -701,36 +689,32 @@ const AdminUserManagement: React.FC = () => {
 
             <div className="space-y-2">
               <Label>Role</Label>
-              <Select value={roleFilter} onValueChange={setRoleFilter}>
-                <SelectTrigger className="bg-white/70 border-slate-200 focus:border-blue-500">
-                  <SelectValue placeholder="All roles" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Roles</SelectItem>
-                  <SelectItem value="customer">Customer</SelectItem>
-                  <SelectItem value="assessment_staff">
-                    Assessment Staff
-                  </SelectItem>
-                  <SelectItem value="consultant">Consultant</SelectItem>
-                  <SelectItem value="manager">Manager</SelectItem>
-                  <SelectItem value="admin">Admin</SelectItem>
-                </SelectContent>
-              </Select>
+              <select
+                value={roleFilter}
+                onChange={(e) => setRoleFilter(e.target.value)}
+                className="w-full px-3 py-2 bg-white/70 border border-slate-200 rounded-md focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+              >
+                <option value="all">All Roles</option>
+                <option value="customer">Customer</option>
+                <option value="assessment_staff">Assessment Staff</option>
+                <option value="consultant">Consultant</option>
+                <option value="manager">Manager</option>
+                <option value="admin">Admin</option>
+              </select>
             </div>
 
             <div className="space-y-2">
               <Label>Status</Label>
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="bg-white/70 border-slate-200 focus:border-blue-500">
-                  <SelectValue placeholder="All statuses" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Statuses</SelectItem>
-                  <SelectItem value="active">Active</SelectItem>
-                  <SelectItem value="inactive">Inactive</SelectItem>
-                  <SelectItem value="suspended">Suspended</SelectItem>
-                </SelectContent>
-              </Select>
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+                className="w-full px-3 py-2 bg-white/70 border border-slate-200 rounded-md focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+              >
+                <option value="all">All Statuses</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="suspended">Suspended</option>
+              </select>
             </div>
 
             <div className="space-y-2">
