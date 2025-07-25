@@ -20,6 +20,18 @@ import CustomerTracking from "./pages/customer/CustomerTracking";
 import AdminUserManagement from "./pages/admin/AdminUserManagement";
 import AdminStaffManagement from "./pages/admin/AdminStaffManagement";
 import AdminSystemSettings from "./pages/admin/SettingsPage";
+import CustomerConsultationPage from "./pages/customer/CustomerConsultationPage";
+import CustomerCertificatesPage from "./pages/customer/CustomerCertificatesPage";
+import AssessmentQueue from "./pages/employee/AssessmentQueue";
+import SampleManagement from "./pages/employee/SampleManagement";
+import Communications from "./pages/consultant/Communications";
+import ConsultationRequests from "./pages/consultant/ConsultationRequests";
+import CustomerPaymentsPage from "./pages/customer/CustomerPaymentsPage";
+import CertificateManagement from "./pages/manager/CertificateManagement";
+import StaffAssignment from "./pages/manager/StaffAssignment";
+import ServiceManagement from "./pages/manager/ServiceManagement";
+import Reports from "./pages/manager/Reports";
+import BlogManagement from "./pages/manager/BlogManagement";
 
 const queryClient = new QueryClient();
 
@@ -66,7 +78,7 @@ const App = () => (
                 path="consultation"
                 element={
                   <ProtectedRoute requiredRoles={["customer"]}>
-                    <div>Consultation Page - Coming Soon</div>
+                    <CustomerConsultationPage />
                   </ProtectedRoute>
                 }
               />
@@ -74,7 +86,7 @@ const App = () => (
                 path="certificates"
                 element={
                   <ProtectedRoute requiredRoles={["customer"]}>
-                    <div>Certificates Page - Coming Soon</div>
+                    <CustomerCertificatesPage />
                   </ProtectedRoute>
                 }
               />
@@ -82,7 +94,7 @@ const App = () => (
                 path="payments"
                 element={
                   <ProtectedRoute requiredRoles={["customer"]}>
-                    <div>Payments Page - Coming Soon</div>
+                    <CustomerPaymentsPage />
                   </ProtectedRoute>
                 }
               />
@@ -92,7 +104,7 @@ const App = () => (
                 path="assessment-queue"
                 element={
                   <ProtectedRoute requiredRoles={["assessment_staff"]}>
-                    <div>Assessment Queue - Coming Soon</div>
+                    <AssessmentQueue />
                   </ProtectedRoute>
                 }
               />
@@ -100,7 +112,7 @@ const App = () => (
                 path="samples"
                 element={
                   <ProtectedRoute requiredRoles={["assessment_staff"]}>
-                    <div>Sample Management - Coming Soon</div>
+                    <SampleManagement />
                   </ProtectedRoute>
                 }
               />
@@ -110,7 +122,7 @@ const App = () => (
                 path="consultation-requests"
                 element={
                   <ProtectedRoute requiredRoles={["consultant"]}>
-                    <div>Consultation Requests - Coming Soon</div>
+                    <ConsultationRequests />
                   </ProtectedRoute>
                 }
               />
@@ -118,7 +130,7 @@ const App = () => (
                 path="communications"
                 element={
                   <ProtectedRoute requiredRoles={["consultant"]}>
-                    <div>Communications - Coming Soon</div>
+                    <Communications />
                   </ProtectedRoute>
                 }
               />
@@ -128,7 +140,7 @@ const App = () => (
                 path="certificate-management"
                 element={
                   <ProtectedRoute requiredRoles={["manager"]}>
-                    <div>Certificate Management - Coming Soon</div>
+                    <CertificateManagement />
                   </ProtectedRoute>
                 }
               />
@@ -136,7 +148,7 @@ const App = () => (
                 path="staff-assignment"
                 element={
                   <ProtectedRoute requiredRoles={["manager"]}>
-                    <div>Staff Assignment - Coming Soon</div>
+                    <StaffAssignment />
                   </ProtectedRoute>
                 }
               />
@@ -144,7 +156,7 @@ const App = () => (
                 path="services"
                 element={
                   <ProtectedRoute requiredRoles={["manager"]}>
-                    <div>Service Management - Coming Soon</div>
+                    <ServiceManagement />
                   </ProtectedRoute>
                 }
               />
@@ -152,7 +164,7 @@ const App = () => (
                 path="blog-management"
                 element={
                   <ProtectedRoute requiredRoles={["manager"]}>
-                    <div>Blog Management - Coming Soon</div>
+                    <BlogManagement />
                   </ProtectedRoute>
                 }
               />
@@ -160,7 +172,7 @@ const App = () => (
                 path="reports"
                 element={
                   <ProtectedRoute requiredRoles={["manager"]}>
-                    <div>Reports - Coming Soon</div>
+                    <Reports />
                   </ProtectedRoute>
                 }
               />
