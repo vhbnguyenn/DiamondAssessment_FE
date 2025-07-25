@@ -22,6 +22,11 @@ import AdminStaffManagement from "./pages/admin/AdminStaffManagement";
 import AdminSystemSettings from "./pages/admin/SettingsPage";
 import CustomerConsultationPage from "./pages/customer/CustomerConsultationPage";
 import CustomerCertificatesPage from "./pages/customer/CustomerCertificatesPage";
+import AssessmentQueue from "./pages/employee/AssessmentQueue";
+import SampleManagement from "./pages/employee/SampleManagement";
+import Communications from "./pages/consultant/Communications";
+import ConsultationRequests from "./pages/consultant/ConsultationRequests";
+import CustomerPaymentsPage from "./pages/customer/CustomerPaymentsPage";
 
 const queryClient = new QueryClient();
 
@@ -84,7 +89,7 @@ const App = () => (
                 path="payments"
                 element={
                   <ProtectedRoute requiredRoles={["customer"]}>
-                    <div>Payments Page - Coming Soon</div>
+                    <CustomerPaymentsPage />
                   </ProtectedRoute>
                 }
               />
@@ -94,7 +99,7 @@ const App = () => (
                 path="assessment-queue"
                 element={
                   <ProtectedRoute requiredRoles={["assessment_staff"]}>
-                    <div>Assessment Queue - Coming Soon</div>
+                    <AssessmentQueue />
                   </ProtectedRoute>
                 }
               />
@@ -102,7 +107,7 @@ const App = () => (
                 path="samples"
                 element={
                   <ProtectedRoute requiredRoles={["assessment_staff"]}>
-                    <div>Sample Management - Coming Soon</div>
+                    <SampleManagement />
                   </ProtectedRoute>
                 }
               />
@@ -112,7 +117,7 @@ const App = () => (
                 path="consultation-requests"
                 element={
                   <ProtectedRoute requiredRoles={["consultant"]}>
-                    <div>Consultation Requests - Coming Soon</div>
+                    <ConsultationRequests />
                   </ProtectedRoute>
                 }
               />
@@ -120,7 +125,7 @@ const App = () => (
                 path="communications"
                 element={
                   <ProtectedRoute requiredRoles={["consultant"]}>
-                    <div>Communications - Coming Soon</div>
+                    <Communications />
                   </ProtectedRoute>
                 }
               />
