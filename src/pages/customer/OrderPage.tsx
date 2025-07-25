@@ -40,7 +40,6 @@ import {
   User,
   Package,
 } from "lucide-react";
-import { Header } from "@/components/layout/Header";
 import { toast } from "sonner";
 
 const OrderPage = () => {
@@ -56,23 +55,18 @@ const OrderPage = () => {
     unitName: "",
     taxCode: "",
 
-    // Service Details
     serviceId: "",
     requestType: "assessment",
     specialRequirements: "",
     urgentDelivery: false,
 
-    // Diamond Information
     diamondCount: 1,
     estimatedValue: "",
     diamondDescription: "",
 
-    // Delivery Information
     deliveryMethod: "pickup",
     deliveryAddress: "",
     preferredDate: "",
-
-    // Payment Information
     paymentMethod: "vnpay",
   });
 
@@ -296,7 +290,6 @@ const OrderPage = () => {
   if (!selectedService && currentStep === 1) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-        <Header />
         <div className="container mx-auto px-4 py-20">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4 text-slate-800">
@@ -352,8 +345,6 @@ const OrderPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <Header />
-
       <div className="container mx-auto px-4 py-8">
         {/* Progress Steps */}
         <div className="max-w-4xl mx-auto mb-8">
